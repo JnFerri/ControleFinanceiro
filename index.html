@@ -7,11 +7,28 @@
     <title>Document</title>
 </head>
 <body>
-    <form onsubmit='' class="formulario">
-        <input type="number" class="input-ganhos" placeholder="Ganhos">
-        <input type="text"  class="input" placeholder="Nome do Gasto">
-        <input type="number"  class="input" placeholder="Valor">
-        <input type="submit" id="submit" value="Enviar">
-    </form>
+    <section>
+        <div>
+            <h2>Ganhos</h2>
+            <form action="" onsubmit="">
+                <input type="text" id="earnName" placeholder="Nome">
+                <input type="number"  id="earnValue" placeholder="Valor">
+                <input type="submit" value="Postar">
+            </form>
+            <h2>Gastos</h2>
+            <form action="">
+                <input type="text" id="spendName" placeholder="Nome">
+                <input type="number"  id="spendValue" placeholder="Valor">
+                <input type="submit" value="Postar">
+            </form>
+        </div>
+    </section>
+    <section>
+
+    </section>
 </body>
+<script src="assets/js/controllers/FinanceController.js"></script>
+    <script>
+        let financeController = new FinanceController()
+    </script>
 </html>
