@@ -12,5 +12,11 @@ class FinanceController{
         event.preventDefault()
         console.log(this._inputNameEarn, this._inputValueEarn)
     }
+
+    get(){
+        return this._inputNameEarn
+    }
 }
+
+
 
