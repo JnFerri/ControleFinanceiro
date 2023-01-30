@@ -1,22 +1,22 @@
 import Earning from "../models/Earnings.js"
 import Spending from "../models/Spending.js"
+import { EarningsList } from "../models/EarningsList.js"
 
-class FinanceController{
+export class FinanceController{
     constructor(){
         let $ = document.querySelector.bind(document)
-        this._inputNameEarn = $('#nameEarn')
-        this._inputValueEarn = $('#valueEarn')
+        this._inputNameEarn = $('#earnName')
+        this._inputValueEarn = $('#earnValue')
+        this._earningsList = new EarningsList()
     }
 
-    teste(event){
-        event.preventDefault()
-        console.log(this._inputNameEarn, this._inputValueEarn)
+    createEarnings(evento){
+        evento.preventDefault()
+        this._earningsList.addEarningsList(new Earning(this._inputNameEarn.value , this._inputValueEarn.value))
+        console.log(this._earningsList.earningsList)
     }
 
     get(){
         return this._inputNameEarn
     }
 }
-
-
-

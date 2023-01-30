@@ -6,17 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
+    
     <section>
         <div>
             <h2>Ganhos</h2>
-            <form action="" onsubmit="">
+            <form id="formEarnings" action="">
                 <input type="text" id="earnName" placeholder="Nome">
                 <input type="number"  id="earnValue" placeholder="Valor">
                 <input type="submit" value="Postar">
             </form>
             <h2>Gastos</h2>
-            <form action="">
+            <form action="" id="formSpending">
                 <input type="text" id="spendName" placeholder="Nome">
                 <input type="number"  id="spendValue" placeholder="Valor">
                 <input type="submit" value="Postar">
@@ -26,11 +28,11 @@
     <section>
 
     </section>
-   <script type="module" src="assets/js/controllers/FinanceController.js"></script>
-   <script>
-    let financeController = new FinanceController()
-   </script>
+   
+   <script type="module" src="assets/js/main.js"></script>
+   
 </body>
+   
     
 
 </html>
