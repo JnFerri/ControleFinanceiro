@@ -1,22 +1,40 @@
-import Earning from "../models/Earnings.js"
+import Earning from "../models/Earning.js"
 import Spending from "../models/Spending.js"
-import { EarningsList } from "../models/EarningsList.js"
+import { EarningList } from "../models/EarningList.js"
+import { SpendList } from "../models/SpendList.js"
 
 export class FinanceController{
     constructor(){
         let $ = document.querySelector.bind(document)
         this._inputNameEarn = $('#earnName')
         this._inputValueEarn = $('#earnValue')
-        this._earningsList = new EarningsList()
+        this._inputNameSpend = $('#spendName')
+        this._inputValueSpend = $('#spendValue')
+        this._earningList = new EarningList()
+        this._spendList = new SpendList()
+
     }
 
-    createEarnings(evento){
+    createEarning(evento){
         evento.preventDefault()
-        this._earningsList.addEarningsList(new Earning(this._inputNameEarn.value , this._inputValueEarn.value))
-        console.log(this._earningsList.earningsList)
+        this._earningList.addEarningList(new Earning(this._inputNameEarn.value , this._inputValueEarn.value))
+        console.log(this._earningList.earningList)
+        this.clearInput()
     }
 
-    get(){
-        return this._inputNameEarn
+    createSpend(evento){
+        evento.preventDefault()
+        this._spendList.addSpendList(new Spending(this._inputNameSpend.value, this._inputValueSpend.value))
+        console.log(this._spendList.spendList)
+        this.clearInput()
+    }
+
+ 
+    clearInput(){
+        this._inputNameEarn.value = ''
+        this._inputNameSpend.value = ''
+        this._inputValueEarn.value = ''
+        this._inputValueSpend.value = ''
+        this._inputNameSpend.focus()
     }
 }
