@@ -1,19 +1,23 @@
-export class EarnView{
-    constructor(elemento){
-        this._elemento = elemento
+import { View } from "./View.js"
+
+export class EarnView extends View{
+    constructor(elemento) {
+        super(elemento)
     }
 
-    layout(item){
-        return console.log(item.map(item => `${item.name}`))
-        // item.map(item => { return`<div>
-        // <ul>
-        // <li>${item.name}</li>
-        // <li>${item.value}
-        // </ul>
-        // </div>`})
+    layout(item) {
+        let html = ''
+
+        item.map(props => {
+    html = `<div>
+     <ul>
+     <li>${props.name}</li>
+     <li>${props.value}
+     </ul>
+     </div>`}
+        )
+
+        return html
     }
 
-    update(){
-        this._elemento.innerHTML = this.layout
-    }
 }
