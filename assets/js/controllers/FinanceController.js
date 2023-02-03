@@ -22,18 +22,16 @@ export class FinanceController{
     createEarning(evento){
         evento.preventDefault()
         this._earningList.addEarningList(new Earning(this._inputNameEarn.value , this._inputValueEarn.value))
-        console.log(this._earningList.earningList)
         this.clearInput()
-        this._earnView.update(this._earningList._earningList)
+        this._earnView.update(this._earningList)
         
     }
 
     createSpend(evento){
         evento.preventDefault()
         this._spendList.addSpendList(new Spending(this._inputNameSpend.value, this._inputValueSpend.value))
-        console.log(this._spendList.spendList)
         this.clearInput()
-        this._spendView.update(this._spendList._spendList)
+        this._spendView.update(this._spendList)
     }
 
  

@@ -3,21 +3,19 @@ import { View } from "./View.js"
 export class EarnView extends View{
     constructor(elemento) {
         super(elemento)
+
     }
 
     layout(item) {
-        let html = ''
-
-        item.map(props => {
-    html = `<div>
-     <ul>
+return ` <div>
+     <ul>${item._earningList.map(props => `
      <li>${props.name}</li>
-     <li>${props.value}
-     </ul>
-     </div>`}
-        )
-
-        return html
+     <li>${props.value}</li>
+    </ul>
+    `)}
+     </div>
+     <div>Total de ganhos = ${item.calculateTotalEarnings()}
+     `
     }
 
 }

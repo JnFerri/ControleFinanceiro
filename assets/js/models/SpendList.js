@@ -10,4 +10,7 @@ export class SpendList{
     addSpendList(objeto){
         this._spendList.push(objeto)
     }
+    calculateTotalSpendings(){
+        return this._spendList.reduce((total,item) => Number(total) + Number(item.value) , 0 )
+    }
 }
