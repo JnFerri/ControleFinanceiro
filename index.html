@@ -5,23 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/form.css">
+    <link rel="stylesheet" href="assets/css/body.css">
 </head>
 
 <body>
     
-    <section>
-        <div>
-            <h2>Ganhos</h2>
-            <form id="formEarning" action="">
-                <input type="text" id="earnName" placeholder="Nome">
-                <input type="number"  id="earnValue" placeholder="Valor">
-                <input type="submit" value="Postar">
+    <section class="container__forms">
+        <div class="box__form">
+            <h2 class="form__title">Ganhos</h2>
+            <form id="formEarning" action="" class="form">
+                <input class="form__input" type="text" id="earnName" placeholder="Nome">
+                <input class="form__input" type="number"  id="earnValue" placeholder="Valor">
+                <input class="form__input-submit" type="submit" value="Postar">
             </form>
-            <h2>Gastos</h2>
-            <form action="" id="formSpending">
-                <input type="text" id="spendName" placeholder="Nome">
-                <input type="number"  id="spendValue" placeholder="Valor">
-                <input type="submit" value="Postar">
+        </div>
+        <div class="box__form">
+            <h2 class="form__title">Gastos</h2>
+        <form action="" id="formSpending" class="form">
+                <input class="form__input"  type="text" id="spendName" placeholder="Nome">
+                <input class="form__input" type="number"  id="spendValue" placeholder="Valor">
+                <input class="form__input-submit" type="submit" value="Postar">
             </form>
         </div>
     </section>
