@@ -6,14 +6,15 @@ export class SpendView extends View{
     }
 
     layout(item) {
-        return ` <div>
-     <ul>${item._spendList.map(props => `
-     <li>${props.name}</li>
-     <li>${props.value}</li>
-    </ul>
-    `)}
+        return `${item._spendList.map(props =>
+            ` <div class='item'>
+     <div type="none" class="item__list"> 
+     <span class="list__name"> Gasto : ${props.name}</span>
+     <span class="list__value"> Valor : R$${props.value}</span>
      </div>
-     <div>Total de ganhos = ${item.calculateTotalSpendings()}
+      </div>
+    `)}
+     <div class="box__result"><p class='result__total-spend'>Total de gastos = ${item.calculateTotalSpendings()}</p></div>
      `
     }
 }
