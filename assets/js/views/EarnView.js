@@ -10,11 +10,11 @@ export class EarnView extends View{
         return `${item._earningList.map(props =>
          ` <div class='item'>
         <div type="none" class="item__list"> 
-     <p class="list__name"> Ganho : ${props.name}</p>
-     <p class="list__value"> Valor : R$${props.value}</p>
+     <span class="list__name"> Ganho : ${props.name}</span>
+     <span class="list__value"> Valor : R$${props.value}</span>
     </div>
     </div>
-    `)}
+    `).join('')}
      <div class="box__result"><p class='result__total-spend'>Total de ganhos = ${item.calculateTotalEarnings()}</p></div>
      `
     }

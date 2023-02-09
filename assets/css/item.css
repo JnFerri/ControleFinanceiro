@@ -2,42 +2,37 @@
 #earns{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     background-color: rgb(52, 73, 85);
     border-radius: 20px;
     margin: 20px 20px;
+    align-items: center;
+    padding: 20px 20px;
+    
 }
 
-.earn_box{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: white;
-}
 
 #spends{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     background-color: rgb(52, 73, 85);
     border-radius: 20px;
     margin: 20px 20px;
-}
-
-.spend_box{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: white;
+    align-items: center;
+    padding: 20px 20px;
+    
 }
 
 .item{
-    width: 25%;
+    width: 30%;
     background-color: white;
     display: flex;
     align-items: center;
+    border: 1px solid black;
+    border-radius: 30px;
 }
 
 .item__list{
@@ -45,4 +40,8 @@
     flex-direction: column;
     padding: 10px 10px;
     margin: 5px 5px;
+}
+
+.box__result{
+    width: 100%;
 }

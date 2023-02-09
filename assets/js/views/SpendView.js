@@ -13,7 +13,7 @@ export class SpendView extends View{
      <span class="list__value"> Valor : R$${props.value}</span>
      </div>
       </div>
-    `)}
+    `).join("")}
      <div class="box__result"><p class='result__total-spend'>Total de gastos = ${item.calculateTotalSpendings()}</p></div>
      `
     }

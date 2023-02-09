@@ -10,6 +10,7 @@ export class EarningList{
 
     addEarningList(objeto){
         this._earningList.push(objeto)
+        console.log(this._earningList)
     }
 
     calculateTotalEarnings(){
