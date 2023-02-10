@@ -1,3 +1,4 @@
+import { tranformNumberInMonetary } from "../helpers/tranformNumberInMonetary.js";
 import { View } from "./View.js";
 
 export class SpendView extends View{
@@ -10,11 +11,11 @@ export class SpendView extends View{
             ` <div class='item'>
      <div type="none" class="item__list"> 
      <span class="list__name"> Gasto : ${props.name}</span>
-     <span class="list__value"> Valor : R$${props.value}</span>
+     <span class="list__value"> Valor : R$ ${tranformNumberInMonetary.tranformToReais(props.value)}</span>
      </div>
       </div>
     `).join("")}
-     <div class="box__result"><p class='result__total-spend'>Total de gastos = ${item.calculateTotalSpendings()}</p></div>
+     <div class="box__result"><p class='result__total-spend'>Total de gastos = ${tranformNumberInMonetary.tranformToReais(item.calculateTotalSpendings())}</p></div>
      `
     }
 }

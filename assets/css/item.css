@@ -2,7 +2,6 @@
 #earns{
     width: 100%;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     background-color: rgb(52, 73, 85);
     border-radius: 20px;
@@ -16,7 +15,6 @@
 #spends{
     width: 100%;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     background-color: rgb(52, 73, 85);
     border-radius: 20px;
@@ -27,12 +25,13 @@
 }
 
 .item{
-    width: 30%;
-    background-color: white;
+    width: 20%;
+    background-color: rgb(109, 109, 109);
     display: flex;
     align-items: center;
     border: 1px solid black;
-    border-radius: 30px;
+    border-radius: 10px;
+    margin: 5px 10px;
 }
 
 .item__list{
@@ -42,6 +41,19 @@
     margin: 5px 5px;
 }
 
+.list__name{
+    color: white;
+    font-size: 16px;
+    margin: 3px 0;
+}
+
+.list__value{
+    color: white;
+    font-size: 14px;
+    margin: 3px 0;
+}
+
 .box__result{
     width: 100%;
 }
+

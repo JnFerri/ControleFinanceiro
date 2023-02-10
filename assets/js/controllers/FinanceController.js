@@ -4,6 +4,7 @@ import { EarningList } from "../models/EarningList.js"
 import { SpendList } from "../models/SpendList.js"
 import { EarnView } from "../views/EarnView.js"
 import { SpendView } from "../views/SpendView.js"
+import { tranformNumberInMonetary } from "../helpers/tranformNumberInMonetary.js"
 
 export class FinanceController{
     constructor(){
@@ -21,7 +22,7 @@ export class FinanceController{
 
     createEarning(evento){
         evento.preventDefault()
-        this._earningList.addEarningList(new Earning(this._inputNameEarn.value , this._inputValueEarn.value))
+        this._earningList.addEarningList(new Earning(this._inputNameEarn.value , tranformNumberInMonetary.tranformToReais(this._inputValueEarn.value) ))
         this.clearInput()
         this._earnView.update(this._earningList)
         
@@ -29,7 +30,7 @@ export class FinanceController{
 
     createSpend(evento){
         evento.preventDefault()
-        this._spendList.addSpendList(new Spending(this._inputNameSpend.value, this._inputValueSpend.value))
+        this._spendList.addSpendList(new Spending(this._inputNameSpend.value, tranformNumberInMonetary.tranformToReais(this._inputValueSpend.value)))
         this.clearInput()
         this._spendView.update(this._spendList)
     }
