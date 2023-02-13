@@ -10,6 +10,15 @@ export class EarningList{
 
     addEarningList(objeto){
         this._earningList.push(objeto)
+        this._earningList.sort(function (a,b) {
+            if(a._value < b._value) {
+                return -1
+            }else if (a._value > b._value) {
+                return 1
+            }else {
+                return 0
+            }
+        })
         console.log(this._earningList)
     }
 

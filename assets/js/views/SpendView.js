@@ -11,7 +11,7 @@ export class SpendView extends View{
             ` <div class='item'>
      <div type="none" class="item__list"> 
      <span class="list__name"> Gasto : ${props.name}</span>
-     <span class="list__value"> Valor : R$ ${tranformNumberInMonetary.tranformToReais(props.value)}</span>
+     <span class="list__value"> Valor : R$ ${tranformNumberInMonetary.tranformToReais(Number(props.value))}</span>
      </div>
       </div>
     `).join("")}

@@ -12,7 +12,7 @@ export class FinanceController{
         this._inputNameEarn = $('#earnName')
         this._inputValueEarn = $('#earnValue')
         this._inputNameSpend = $('#spendName')
-        this._inputValueSpend = $('#spendValue')
+        this._inputValueSpend =$('#spendValue')
         this._earningList = new EarningList()
         this._spendList = new SpendList()
         this._earnView = new EarnView($('#earns'))
@@ -22,7 +22,7 @@ export class FinanceController{
 
     createEarning(evento){
         evento.preventDefault()
-        this._earningList.addEarningList(new Earning(this._inputNameEarn.value , tranformNumberInMonetary.tranformToReais(this._inputValueEarn.value) ))
+        this._earningList.addEarningList(new Earning(this._inputNameEarn.value , Number(this._inputValueEarn.value) ))
         this.clearInput()
         this._earnView.update(this._earningList)
         
@@ -30,7 +30,7 @@ export class FinanceController{
 
     createSpend(evento){
         evento.preventDefault()
-        this._spendList.addSpendList(new Spending(this._inputNameSpend.value, tranformNumberInMonetary.tranformToReais(this._inputValueSpend.value)))
+        this._spendList.addSpendList(new Spending(this._inputNameSpend.value, Number(this._inputValueSpend.value)))
         this.clearInput()
         this._spendView.update(this._spendList)
     }

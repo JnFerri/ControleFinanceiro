@@ -12,7 +12,7 @@ export class EarnView extends View{
          ` <div class='item'>
         <div type="none" class="item__list"> 
      <span class="list__name"> Ganho : ${props.name}</span>
-     <span class="list__value"> Valor : R$ ${props.value}</span>
+     <span class="list__value"> Valor : R$ ${tranformNumberInMonetary.tranformToReais(Number(props.value))}</span>
     </div>
     </div>
     `).join('')}
