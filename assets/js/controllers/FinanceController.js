@@ -25,6 +25,7 @@ export class FinanceController{
         this._earningList.addEarningList(new Earning(this._inputNameEarn.value , Number(this._inputValueEarn.value) ))
         this.clearInput()
         this._earnView.update(this._earningList)
+        google.charts.setOnLoadCallback(drawChart);
         
     }
 
@@ -33,6 +34,8 @@ export class FinanceController{
         this._spendList.addSpendList(new Spending(this._inputNameSpend.value, Number(this._inputValueSpend.value)))
         this.clearInput()
         this._spendView.update(this._spendList)
+        google.charts.setOnLoadCallback(drawChart);
+        
     }
 
  
@@ -43,4 +46,16 @@ export class FinanceController{
         this._inputValueSpend.value = ''
         this._inputNameSpend.focus()
     }
+
+    drawChart(){
+        const tabela = new google.visualization.DataTable()
+        tabela.addColumn('string','Nome');
+        tabela.addColumn('number','valor');
+        const teste = this._spendList._spendList.map(spend => new Array(spend.name, spend.value))
+        tabela.addRows([teste]);
+        var grafico = new google.visualization.PieChart(document.getElementById('graficoPizza'));
+        grafico.draw(tabela);
+    
+    }
+    
 }
