@@ -25,16 +25,17 @@ export class FinanceController{
         this._earningList.addEarningList(new Earning(this._inputNameEarn.value , Number(this._inputValueEarn.value) ))
         this.clearInput()
         this._earnView.update(this._earningList)
-        google.charts.setOnLoadCallback(drawChart);
-        
+        this.drawChartEarn()
+        google.charts.setOnLoadCallback(this.drawChartEarn)
     }
 
     createSpend(evento){
         evento.preventDefault()
         this._spendList.addSpendList(new Spending(this._inputNameSpend.value, Number(this._inputValueSpend.value)))
         this.clearInput()
-        this._spendView.update(this._spendList)
-        google.charts.setOnLoadCallback(drawChart);
+        this._spendView.update(this._spendList);
+        this.drawChartSpend()
+        google.charts.setOnLoadCallback(this.drawChartSpend)
         
     }
 
@@ -46,15 +47,32 @@ export class FinanceController{
         this._inputValueSpend.value = ''
         this._inputNameSpend.focus()
     }
-
-    drawChart(){
+    
+    drawChartEarn(){
         const tabela = new google.visualization.DataTable()
         tabela.addColumn('string','Nome');
         tabela.addColumn('number','valor');
-        const teste = this._spendList._spendList.map(spend => new Array(spend.name, spend.value))
-        tabela.addRows([teste]);
-        var grafico = new google.visualization.PieChart(document.getElementById('graficoPizza'));
-        grafico.draw(tabela);
+        let arrayEarnValues = this._earningList._earningList.map(earn => new Array(earn.name, earn.value))
+        tabela.addRows(arrayEarnValues);
+        var grafico = new google.visualization.PieChart(document.getElementById('graficoPizzaEarns'));
+        grafico.draw(tabela,{width: 400,
+            height: 240,
+            title: 'Ganhos',
+            colors: ['#3CB371', '#228B22', '#00FF00', '#8FBC8F', '#00FA9A'],
+            is3D: true});
+    }
+    drawChartSpend(){
+        const tabela = new google.visualization.DataTable()
+        tabela.addColumn('string','Nome');
+        tabela.addColumn('number','valor');
+        let arraySpendValues = this._spendList._spendList.map(spend => new Array(spend.name, spend.value))
+        tabela.addRows(arraySpendValues);
+        var grafico = new google.visualization.PieChart(document.getElementById('graficoPizzaSpends'));
+        grafico.draw(tabela,{width: 400,
+            height: 240,
+            title: 'Gastos',
+            colors: ['#8B0000', '#FA8072', '#FF7F50', '#FFA500', '#FFD700','#F08080','#F4A460','#B8860B'],
+            is3D: true});
     
     }
     

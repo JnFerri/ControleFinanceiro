@@ -9,7 +9,7 @@ formEarning.addEventListener("submit", (evento) => { financeController.createEar
 
 let formSpending = document.getElementById("formSpending")
 
-formSpending.addEventListener("submit", (evento) => {financeController.createSpend(evento)})
+formSpending.addEventListener("submit", (evento) => {financeController.createSpend(evento) })
 
 
 
