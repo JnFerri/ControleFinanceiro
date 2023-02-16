@@ -1,0 +1,27 @@
+.graficos{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#graficoPizzaEarns{
+    border: 0.01px solid black;
+    box-shadow: 5px 5px 5px grey;
+    width: 40%;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   
+}
+#graficoPizzaSpends{
+    border: 0.01px solid black;
+    box-shadow: 5px 5px 5px grey;
+    width: 40%;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   
+}

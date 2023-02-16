@@ -70,6 +70,7 @@ export class FinanceController{
         var grafico = new google.visualization.PieChart(document.getElementById('graficoPizzaSpends'));
         grafico.draw(tabela,{width: 400,
             height: 240,
+            borderRadius:10,
             title: 'Gastos',
             colors: ['#8B0000', '#FA8072', '#FF7F50', '#FFA500', '#FFD700','#F08080','#F4A460','#B8860B'],
             is3D: true});
