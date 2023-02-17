@@ -13,30 +13,37 @@ export class FinanceController{
         this._inputValueEarn = $('#earnValue')
         this._inputNameSpend = $('#spendName')
         this._inputValueSpend =$('#spendValue')
+        this._itemEarns = $('#earns')
+        this._itemSpends = $('#spends')
+        this._graficoEarns = $('#graficoPizzaEarns')
+        this._graficoSpends = $('#graficoPizzaSpends')
         this._earningList = new EarningList()
         this._spendList = new SpendList()
-        this._earnView = new EarnView($('#earns'))
-        this._spendView = new SpendView($('#spends'))
+        this._earnView = new EarnView(this._itemEarns)
+        this._spendView = new SpendView(this._itemSpends)
 
     }
 
     createEarning(evento){
         evento.preventDefault()
+        this._itemEarns.style.visibility = 'visible'
         this._earningList.addEarningList(new Earning(this._inputNameEarn.value , Number(this._inputValueEarn.value) ))
         this.clearInput()
         this._earnView.update(this._earningList)
         this.drawChartEarn()
         google.charts.setOnLoadCallback(this.drawChartEarn)
+        this._graficoEarns.style.visibility = 'visible'
     }
 
     createSpend(evento){
         evento.preventDefault()
+        this._itemSpends.style.visibility = 'visible'
         this._spendList.addSpendList(new Spending(this._inputNameSpend.value, Number(this._inputValueSpend.value)))
         this.clearInput()
         this._spendView.update(this._spendList);
         this.drawChartSpend()
         google.charts.setOnLoadCallback(this.drawChartSpend)
-        
+        this._graficoSpends.style.visibility = 'visible'
     }
 
  
@@ -54,7 +61,7 @@ export class FinanceController{
         tabela.addColumn('number','valor');
         let arrayEarnValues = this._earningList._earningList.map(earn => new Array(earn.name, earn.value))
         tabela.addRows(arrayEarnValues);
-        var grafico = new google.visualization.PieChart(document.getElementById('graficoPizzaEarns'));
+        var grafico = new google.visualization.PieChart(this._graficoEarns);
         grafico.draw(tabela,{width: 400,
             height: 240,
             title: 'Ganhos',
@@ -67,7 +74,7 @@ export class FinanceController{
         tabela.addColumn('number','valor');
         let arraySpendValues = this._spendList._spendList.map(spend => new Array(spend.name, spend.value))
         tabela.addRows(arraySpendValues);
-        var grafico = new google.visualization.PieChart(document.getElementById('graficoPizzaSpends'));
+        var grafico = new google.visualization.PieChart(this._graficoSpends);
         grafico.draw(tabela,{width: 400,
             height: 240,
             borderRadius:10,
