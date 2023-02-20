@@ -5,6 +5,7 @@ import { SpendList } from "../models/SpendList.js"
 import { EarnView } from "../views/EarnView.js"
 import { SpendView } from "../views/SpendView.js"
 import { tranformNumberInMonetary } from "../helpers/tranformNumberInMonetary.js"
+import { FinalBalanceView } from "../views/FinalBalanceView.js"
 
 export class FinanceController{
     constructor(){
@@ -17,10 +18,12 @@ export class FinanceController{
         this._itemSpends = $('#spends')
         this._graficoEarns = $('#graficoPizzaEarns')
         this._graficoSpends = $('#graficoPizzaSpends')
+        this._finalBalance = $('#finalBalance__box')
         this._earningList = new EarningList()
         this._spendList = new SpendList()
         this._earnView = new EarnView(this._itemEarns)
         this._spendView = new SpendView(this._itemSpends)
+        this._finalBalanceView = new FinalBalanceView(this._finalBalance)
 
     }
 
@@ -43,6 +46,7 @@ export class FinanceController{
         this._spendView.update(this._spendList);
         this.drawChartSpend()
         google.charts.setOnLoadCallback(this.drawChartSpend)
+        console.log(this._spendList.calculateTotalSpendings())
         this._graficoSpends.style.visibility = 'visible'
     }
 
