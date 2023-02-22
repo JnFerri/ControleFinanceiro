@@ -1,4 +1,5 @@
 import { View } from "./View.js"
+import { tranformNumberInMonetary } from "../helpers/tranformNumberInMonetary.js"
 
 export class FinalBalanceView extends View{
     constructor(elemento){
@@ -6,6 +7,6 @@ export class FinalBalanceView extends View{
     }
 
     layout(item){
-        return `<span id="finalBalance">${item}</span>`
+        return `<span class="finalBalance__text">Saldo Final : ${tranformNumberInMonetary.tranformToReais(item)}</span>`
     }
 }

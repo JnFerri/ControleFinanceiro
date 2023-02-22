@@ -1,4 +1,18 @@
-.finalBalance__box{
-    width: 40%;
+#finalBalance{
+    width: 30%;
     padding: 10px 10px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-style: none;
+    border-radius: 5px;
+background: #ffffff;
+box-shadow: inset -5px -5px 35px #c2c2c2,
+            inset 5px 5px 35px #ffffff;
+            visibility: hidden;
+}
+
+.finalBalance__text{
+    font-size: 30px;
 }

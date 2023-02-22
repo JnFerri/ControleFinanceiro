@@ -19,7 +19,6 @@ export class EarningList{
                 return 0
             }
         })
-        console.log(this._earningList)
     }
 
     calculateTotalEarnings(){
