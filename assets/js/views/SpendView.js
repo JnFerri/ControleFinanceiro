@@ -7,15 +7,15 @@ export class SpendView extends View{
     }
 
     layout(item) {
-        return `${item._spendList.map(props =>
+        return `${item.map(props =>
             ` <div class='item'>
      <div type="none" class="item__list"> 
-     <span class="list__name"> Gasto : ${props.name}</span>
-     <span class="list__value"> Valor : R$ ${tranformNumberInMonetary.tranformToReais(Number(props.value))}</span>
+     <span class="list__name"> Gasto : ${props._name}</span>
+     <span class="list__value"> Valor : R$ ${tranformNumberInMonetary.tranformToReais(Number(props._value))}</span>
      </div>
       </div>
     `).join("")}
-     <div class="box__result"><p class='result__total-spend'>Total de gastos = ${tranformNumberInMonetary.tranformToReais(item.calculateTotalSpendings())}</p></div>
+     <div class="box__result"><p class='result__total-spend'>Total de gastos = ${tranformNumberInMonetary.tranformToReais(item.reduce((total,item) => Number(total) + Number(item._value) , 0 ))}</p></div>
      `
     }
 }

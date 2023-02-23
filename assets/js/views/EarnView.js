@@ -8,15 +8,15 @@ export class EarnView extends View{
     }
 
     layout(item) {
-        return `${item._earningList.map(props =>
+        return `${item.map(props =>
          ` <div class='item'>
         <div type="none" class="item__list"> 
-     <span class="list__name"> Ganho : ${props.name}</span>
-     <span class="list__value"> Valor : R$ ${tranformNumberInMonetary.tranformToReais(Number(props.value))}</span>
+     <span class="list__name"> Ganho : ${props._name}</span>
+     <span class="list__value"> Valor : R$ ${tranformNumberInMonetary.tranformToReais(Number(props._value))}</span>
     </div>
     </div>
     `).join('')}
-     <div class="box__result"><p class='result__total-spend'>Total de ganhos = ${tranformNumberInMonetary.tranformToReais(item.calculateTotalEarnings())}</p></div>
+     <div class="box__result"><p class='result__total-spend'>Total de ganhos = ${tranformNumberInMonetary.tranformToReais(item.reduce((total,item) => Number(total) + Number(item._value) , 0 ))}</p></div>
      `
     }
 

@@ -11,6 +11,8 @@ let formSpending = document.getElementById("formSpending")
 
 formSpending.addEventListener("submit", (evento) => {financeController.createSpend(evento) })
 
+document.onload = financeController.showFinanceLocalStorage()
+
 
 
 
