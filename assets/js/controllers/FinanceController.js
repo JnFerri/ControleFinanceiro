@@ -26,25 +26,27 @@ export class FinanceController{
         this._spendView = new SpendView(this._itemSpends)
         this._finalBalance = new FinalBalance()
         this._finalBalanceView = new FinalBalanceView(this._finalBalancePost)
-        this._localStorageEarns = JSON.parse(localStorage.getItem('earnList'))
-        this._localStorageSpends = JSON.parse(localStorage.getItem('spendList'))
 
     }
 
     showFinanceLocalStorage(){
-        this._earnView.update(this._localStorageEarns)
-        this._spendView.update(this._localStorageSpends)
-        this._itemEarns.style.visibility = 'visible'
-        this._graficoEarns.style.visibility = 'visible'
-        this._finalBalancePost.style.visibility = 'visible'
-        this._itemSpends.style.visibility = 'visible'
-        this._graficoSpends.style.visibility = 'visible'
-        this._finalBalancePost.style.visibility = 'visible'
+        console.log(this._earningList._earningList)
+        this._earnView.update(this._earningList)
+        this._spendView.update(this._spendList)
+        if(this._earningList._earningList.length > 0 || this._spendList._spendList.length > 0){
+
+            this._itemEarns.style.visibility = 'visible'
+            this._graficoEarns.style.visibility = 'visible'
+            this._finalBalancePost.style.visibility = 'visible'
+            this._itemSpends.style.visibility = 'visible'
+            this._graficoSpends.style.visibility = 'visible'
+            this._finalBalancePost.style.visibility = 'visible'
+        }
         this.drawChartEarn()
         google.charts.setOnLoadCallback(this.drawChartEarn)
         this.drawChartSpend()
         google.charts.setOnLoadCallback(this.drawChartSpend)
-        this._finalBalanceView.update(this._finalBalance.calculateFinalBalance(this._localStorageEarns.reduce((total,item) => Number(total) + Number(item._value) , 0 ) , this._localStorageSpends.reduce((total,item) => Number(total) + Number(item._value) , 0 )))
+        this._finalBalanceView.update(this._finalBalance.calculateFinalBalance(this._earningList.calculateTotalSpendings() , this._spendList.calculateTotalSpendings()))
     }
 
     createEarning(evento){
@@ -52,13 +54,7 @@ export class FinanceController{
         this._earningList.addEarningList(new Earning(this._inputNameEarn.value , Number(this._inputValueEarn.value) ))
         this.clearInput()
         localStorage.setItem('earnList', JSON.stringify(this._earningList._earningList))
-        this._earnView.update(this._earningList._earningList)
-        this.drawChartEarn()
-        google.charts.setOnLoadCallback(this.drawChartEarn)
-        this._finalBalanceView.update(this._finalBalance.calculateFinalBalance(this._earningList.calculateTotalEarnings() , this._spendList.calculateTotalSpendings()))
-        this._itemEarns.style.visibility = 'visible'
-        this._graficoEarns.style.visibility = 'visible'
-        this._finalBalancePost.style.visibility = 'visible'
+        this.showFinanceLocalStorage()
     }
 
     createSpend(evento){
@@ -66,13 +62,7 @@ export class FinanceController{
         this._spendList.addSpendList(new Spending(this._inputNameSpend.value, Number(this._inputValueSpend.value)))
         this.clearInput()
         localStorage.setItem('spendList', JSON.stringify(this._spendList._spendList))
-        this._spendView.update(this._spendList._spendList);
-        this.drawChartSpend()
-        google.charts.setOnLoadCallback(this.drawChartSpend)
-        this._finalBalanceView.update(this._finalBalance.calculateFinalBalance(this._earningList.calculateTotalEarnings() , this._spendList.calculateTotalSpendings()))
-        this._itemSpends.style.visibility = 'visible'
-        this._graficoSpends.style.visibility = 'visible'
-        this._finalBalancePost.style.visibility = 'visible'
+        this.showFinanceLocalStorage()
     }
 
  
@@ -88,7 +78,7 @@ export class FinanceController{
         const tabela = new google.visualization.DataTable()
         tabela.addColumn('string','Nome');
         tabela.addColumn('number','valor');
-        let arrayEarnValues = this._localStorageEarns.map(earn => new Array(earn._name, earn._value))
+        let arrayEarnValues = this._earningList._earningList.map(earn => new Array(earn._name, earn._value))
         tabela.addRows(arrayEarnValues);
         var grafico = new google.visualization.PieChart(this._graficoEarns);
         grafico.draw(tabela,{width: 400,
@@ -101,7 +91,7 @@ export class FinanceController{
         const tabela = new google.visualization.DataTable()
         tabela.addColumn('string','Nome');
         tabela.addColumn('number','valor');
-        let arraySpendValues = this._localStorageSpends.map(spend => new Array(spend._name, spend._value))
+        let arraySpendValues = this._spendList._spendList.map(spend => new Array(spend._name, spend._value))
         tabela.addRows(arraySpendValues);
         var grafico = new google.visualization.PieChart(this._graficoSpends);
         grafico.draw(tabela,{width: 400,

@@ -1,6 +1,6 @@
 export class SpendList{
     constructor(){
-        this._spendList = []
+        this._spendList = [] || new Array(JSON.parse(localStorage.getItem('spendList')))
     }
 
     get spendList(){

@@ -1,7 +1,6 @@
 export class EarningList{
     constructor(){
-        this._earningList = []
-        this.totalEarnings = 0
+        this._earningList = [] || new Array(JSON.parse(localStorage.getItem('earnList')))
     }
 
     get earningList(){
@@ -22,6 +21,6 @@ export class EarningList{
     }
 
     calculateTotalEarnings(){
-        return this._earningList.reduce((total,item) => Number(total) + Number(item.value) , 0 )
+        return this._earningList.reduce((total,item) => Number(total) + Number(item._value) , 0 )
     }
 }

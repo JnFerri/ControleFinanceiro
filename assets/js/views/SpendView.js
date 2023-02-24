@@ -7,7 +7,7 @@ export class SpendView extends View{
     }
 
     layout(item) {
-        return `${item.map(props =>
+        return `${item._spendList.map(props =>
             ` <div class='item'>
      <div type="none" class="item__list"> 
      <span class="list__name"> Gasto : ${props._name}</span>
@@ -15,7 +15,7 @@ export class SpendView extends View{
      </div>
       </div>
     `).join("")}
-     <div class="box__result"><p class='result__total-spend'>Total de gastos = ${tranformNumberInMonetary.tranformToReais(item.reduce((total,item) => Number(total) + Number(item._value) , 0 ))}</p></div>
+     <div class="box__result"><p class='result__total-spend'>Total de gastos = ${tranformNumberInMonetary.tranformToReais(item.calculateTotalSpendings())}</p></div>
      `
     }
 }
