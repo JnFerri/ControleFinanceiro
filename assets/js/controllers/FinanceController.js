@@ -7,6 +7,7 @@ import { SpendView } from "../views/SpendView.js"
 import { tranformNumberInMonetary } from "../helpers/tranformNumberInMonetary.js"
 import { FinalBalanceView } from "../views/FinalBalanceView.js"
 import { FinalBalance } from "../models/FinalBalance.js"
+import { Draws } from "../commons/Draws.js"
 
 export class FinanceController{
     constructor(){
@@ -26,27 +27,23 @@ export class FinanceController{
         this._spendView = new SpendView(this._itemSpends)
         this._finalBalance = new FinalBalance()
         this._finalBalanceView = new FinalBalanceView(this._finalBalancePost)
+        this._draws = new Draws()
 
     }
 
     showFinanceLocalStorage(){
-        console.log(this._earningList._earningList)
         this._earnView.update(this._earningList)
         this._spendView.update(this._spendList)
         if(this._earningList._earningList.length > 0 || this._spendList._spendList.length > 0){
 
-            this._itemEarns.style.visibility = 'visible'
-            this._graficoEarns.style.visibility = 'visible'
-            this._finalBalancePost.style.visibility = 'visible'
-            this._itemSpends.style.visibility = 'visible'
-            this._graficoSpends.style.visibility = 'visible'
-            this._finalBalancePost.style.visibility = 'visible'
+        this.showItens()
+    
         }
-        this.drawChartEarn()
-        google.charts.setOnLoadCallback(this.drawChartEarn)
-        this.drawChartSpend()
-        google.charts.setOnLoadCallback(this.drawChartSpend)
-        this._finalBalanceView.update(this._finalBalance.calculateFinalBalance(this._earningList.calculateTotalSpendings() , this._spendList.calculateTotalSpendings()))
+        this._draws.drawChartEarn(this._earningList._earningList, this._graficoEarns)
+        google.charts.setOnLoadCallback(this._draws._drawEarns)
+        this._draws.drawChartSpend(this._spendList._spendList, this._graficoSpends)
+        google.charts.setOnLoadCallback(this._draws._drawSpends)
+        this._finalBalanceView.update(this._finalBalance.calculateFinalBalance(this._earningList.calculateTotalEarnings() , this._spendList.calculateTotalSpendings()))
     }
 
     createEarning(evento){
@@ -74,33 +71,15 @@ export class FinanceController{
         this._inputNameSpend.focus()
     }
     
-    drawChartEarn(){
-        const tabela = new google.visualization.DataTable()
-        tabela.addColumn('string','Nome');
-        tabela.addColumn('number','valor');
-        let arrayEarnValues = this._earningList._earningList.map(earn => new Array(earn._name, earn._value))
-        tabela.addRows(arrayEarnValues);
-        var grafico = new google.visualization.PieChart(this._graficoEarns);
-        grafico.draw(tabela,{width: 400,
-            height: 240,
-            title: 'Ganhos',
-            colors: ['#3CB371', '#228B22', '#00FF00', '#8FBC8F', '#00FA9A'],
-            is3D: true});
+    showItens(){
+        this._itemEarns.style.visibility = 'visible'
+            this._graficoEarns.style.visibility = 'visible'
+            this._finalBalancePost.style.visibility = 'visible'
+            this._itemSpends.style.visibility = 'visible'
+            this._graficoSpends.style.visibility = 'visible'
+            this._finalBalancePost.style.visibility = 'visible'
     }
-    drawChartSpend(){
-        const tabela = new google.visualization.DataTable()
-        tabela.addColumn('string','Nome');
-        tabela.addColumn('number','valor');
-        let arraySpendValues = this._spendList._spendList.map(spend => new Array(spend._name, spend._value))
-        tabela.addRows(arraySpendValues);
-        var grafico = new google.visualization.PieChart(this._graficoSpends);
-        grafico.draw(tabela,{width: 400,
-            height: 240,
-            borderRadius:10,
-            title: 'Gastos',
-            colors: ['#8B0000', '#FA8072', '#FF7F50', '#FFA500', '#FFD700','#F08080','#F4A460','#B8860B'],
-            is3D: true});
     
-    }
+    
     
 }

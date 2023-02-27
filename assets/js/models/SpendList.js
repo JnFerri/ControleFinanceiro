@@ -1,6 +1,6 @@
 export class SpendList{
     constructor(){
-        this._spendList = [] || new Array(JSON.parse(localStorage.getItem('spendList')))
+        this._spendList = JSON.parse(localStorage.getItem('spendList')) || []
     }
 
     get spendList(){
@@ -20,6 +20,6 @@ export class SpendList{
         })
     }
     calculateTotalSpendings(){
-        return this._spendList.reduce((total,item) => Number(total) + Number(item.value) , 0 )
+        return this._spendList.reduce((total,item) => Number(total) + Number(item._value) , 0 )
     }
 }

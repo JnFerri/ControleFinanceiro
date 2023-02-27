@@ -1,6 +1,6 @@
 export class EarningList{
     constructor(){
-        this._earningList = [] || new Array(JSON.parse(localStorage.getItem('earnList')))
+        this._earningList = JSON.parse(localStorage.getItem('earnList')) || []
     }
 
     get earningList(){

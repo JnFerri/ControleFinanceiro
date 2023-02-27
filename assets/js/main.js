@@ -13,6 +13,8 @@ formSpending.addEventListener("submit", (evento) => {financeController.createSpe
 
 document.onload = financeController.showFinanceLocalStorage()
 
+console.log(financeController._earningList._earningList)
+
 
 
 
