@@ -15,6 +15,11 @@ document.onload = financeController.showFinanceLocalStorage()
 
 console.log(financeController._earningList._earningList)
 
+let buttonRemoveEarn = new Array(document.querySelectorAll("#buttonRemoveEarn"))
+
+buttonRemoveEarn.forEach(item => item.addEventListener('click', () => console.log(item)))
+
+
 
 
 

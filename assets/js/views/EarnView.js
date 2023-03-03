@@ -10,6 +10,7 @@ export class EarnView extends View{
     layout(item) {
         return `${item._earningList.map(props =>
          ` <div class='item'>
+         <button id="buttonRemoveEarn" ">X</button>
         <div type="none" class="item__list"> 
      <span class="list__name"> Ganho : ${props._name}</span>
      <span class="list__value"> Valor : R$ ${tranformNumberInMonetary.tranformToReais(Number(props._value))}</span>

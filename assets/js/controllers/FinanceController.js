@@ -80,6 +80,12 @@ export class FinanceController{
             this._finalBalancePost.style.visibility = 'visible'
     }
     
+    itemRemoveEarn(index){
+        this._earningList.splice(index, 1)
+        localStorage.setItem('earnList', JSON.stringify(this._earningList._earningList))
+        this._earnView.update(this._earningList)
+        this.showFinanceLocalStorage()
+    }
     
     
 }
