@@ -21,9 +21,8 @@ let buttonRemoveEarnArray = []
 
 buttonRemoveEarn.forEach(item =>  buttonRemoveEarnArray.push(item)) 
 
-buttonRemoveEarnArray.map(item => item.addEventListener('click', financeController.itemRemoveEarn(buttonRemoveEarnArray.indexOf(item))))
+buttonRemoveEarnArray.map(item => item.addEventListener('click', () => financeController.itemRemoveEarn(buttonRemoveEarnArray.indexOf(item))))
 
-console.log(buttonRemoveEarnArray)
 
 
 

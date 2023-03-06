@@ -7,12 +7,10 @@ export class Draws{
     }
 
     drawChartEarn(item,local){
-        console.log(item)
         const tabela = new google.visualization.DataTable()
         tabela.addColumn('string','Nome');
         tabela.addColumn('number','valor');
         let arrayEarnValues = item.map(earn => this._drawEarns.push(new Array(earn._name, earn._value)))
-        console.log(this._drawEarns)
         tabela.addRows(this._drawEarns);
         var grafico = new google.visualization.PieChart(local);
         grafico.draw(tabela,{width: 400,
@@ -23,7 +21,6 @@ export class Draws{
     }
 
     drawChartSpend(item, local){
-        console.log(item)
         const tabela = new google.visualization.DataTable()
         tabela.addColumn('string','Nome');
         tabela.addColumn('number','valor');
