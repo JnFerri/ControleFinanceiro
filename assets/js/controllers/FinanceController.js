@@ -39,11 +39,14 @@ export class FinanceController{
         this.showItens()
     
         }
+        this._draws.clearDrawEarns()
         this._draws.drawChartEarn(this._earningList._earningList, this._graficoEarns)
         google.charts.setOnLoadCallback(this._draws._drawEarns)
+        this._draws.clearDrawSpends()
         this._draws.drawChartSpend(this._spendList._spendList, this._graficoSpends)
         google.charts.setOnLoadCallback(this._draws._drawSpends)
         this._finalBalanceView.update(this._finalBalance.calculateFinalBalance(this._earningList.calculateTotalEarnings() , this._spendList.calculateTotalSpendings()))
+        
     }
 
     createEarning(evento){
@@ -52,6 +55,7 @@ export class FinanceController{
         this.clearInput()
         localStorage.setItem('earnList', JSON.stringify(this._earningList._earningList))
         this.showFinanceLocalStorage()
+        location.reload()
     }
 
     createSpend(evento){
@@ -60,6 +64,8 @@ export class FinanceController{
         this.clearInput()
         localStorage.setItem('spendList', JSON.stringify(this._spendList._spendList))
         this.showFinanceLocalStorage()
+        location.reload()
+        
     }
 
  
@@ -85,6 +91,15 @@ export class FinanceController{
         localStorage.setItem('earnList', JSON.stringify(this._earningList._earningList))
         this._earnView.update(this._earningList)
         this.showFinanceLocalStorage()
+        location.reload()
+    }
+
+    itemRemoveSpend(index){
+        this._spendList._spendList.splice(index,1)
+        localStorage.setItem('spendList', JSON.stringify(this._spendList._spendList))
+        this._spendView.update(this._spendList)
+        this.showFinanceLocalStorage()
+        location.reload()
     }
     
     

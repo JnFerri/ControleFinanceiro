@@ -9,7 +9,7 @@ export class SpendView extends View{
     layout(item) {
         return `${item._spendList.map(props =>
             ` <div class='item'>
-            <button id="buttonRemoveSpend" onclick="removeItem(${item._spendList.indexOf(props)})">X</button>
+            <button id="buttonRemoveSpend" >X</button>
      <div type="none" class="item__list"> 
      <span class="list__name"> Gasto : ${props._name}</span>
      <span class="list__value"> Valor : R$ ${tranformNumberInMonetary.tranformToReais(Number(props._value))}</span>

@@ -17,11 +17,27 @@ console.log(financeController._earningList._earningList)
 
 let buttonRemoveEarn = document.querySelectorAll("#buttonRemoveEarn")
 
+let buttonRemoveSpend = document.querySelectorAll("#buttonRemoveSpend")
+
 let buttonRemoveEarnArray = []
+
+let buttonRemoveSpendArray = []
 
 buttonRemoveEarn.forEach(item =>  buttonRemoveEarnArray.push(item)) 
 
-buttonRemoveEarnArray.map(item => item.addEventListener('click', () => financeController.itemRemoveEarn(buttonRemoveEarnArray.indexOf(item))))
+function removeItemEarn(item){
+    financeController.itemRemoveEarn(buttonRemoveEarnArray.indexOf(item))
+   
+}
+buttonRemoveEarnArray.map(item => item.addEventListener('click', function (){ removeItemEarn(item)} ))
+
+buttonRemoveSpend.forEach(item =>  buttonRemoveSpendArray.push(item)) 
+
+function removeItemSpend(item){
+    financeController.itemRemoveSpend(buttonRemoveSpendArray.indexOf(item))
+   
+}
+buttonRemoveSpendArray.map(item => item.addEventListener('click', function (){ removeItemSpend(item)} ))
 
 
 

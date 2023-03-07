@@ -35,4 +35,12 @@ export class Draws{
             is3D: true});
     
     }
+
+    clearDrawEarns(){
+        this._drawEarns = []
+    }
+
+    clearDrawSpends(){
+        this._drawSpends = []
+    }
 }
