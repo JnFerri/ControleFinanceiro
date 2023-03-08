@@ -8,6 +8,7 @@ export class View {
     }
     
     update(item) {
+        this._elemento.innerHTML = ``
         this._elemento.innerHTML = this.layout(item)
     }
 

@@ -27,7 +27,7 @@ buttonRemoveEarn.forEach(item =>  buttonRemoveEarnArray.push(item))
 
 function removeItemEarn(item){
     financeController.itemRemoveEarn(buttonRemoveEarnArray.indexOf(item))
-   
+    
 }
 buttonRemoveEarnArray.map(item => item.addEventListener('click', function (){ removeItemEarn(item)} ))
 
@@ -40,6 +40,9 @@ function removeItemSpend(item){
 buttonRemoveSpendArray.map(item => item.addEventListener('click', function (){ removeItemSpend(item)} ))
 
 
+let clearAllButton = document.getElementById('limparTudo')
+
+clearAllButton.addEventListener('click', function(){financeController.clearAll()})
 
 
 

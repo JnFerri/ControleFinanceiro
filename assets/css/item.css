@@ -34,7 +34,6 @@ box-shadow:  -6px -6px 37px #999999,
     width: 30%;
     background-color: rgb(109, 109, 109);
     display: flex;
-    align-items: center;
     border: 0.01px solid black;
     box-shadow: 2px 2px 2px grey;
     border-radius: 10px;
@@ -62,5 +61,24 @@ box-shadow:  -6px -6px 37px #999999,
 
 .box__result{
     width: 100%;
+}
+
+#buttonRemoveEarn{
+    height: 20%;
+    margin: 5px 5px;
+    background-color: rgb(77, 77, 77);
+    color: white;
+    box-shadow: 2px 2px 3px white;
+    border: 0.1px solid white ;
+    border-radius: 5px;
+}
+#buttonRemoveSpend{
+    height: 20%;
+    margin: 5px 5px;
+    background-color: rgb(77, 77, 77);
+    color: white;
+    box-shadow: 2px 2px 3px white;
+    border: 0.1px solid white ;
+    border-radius: 5px;
 }
 

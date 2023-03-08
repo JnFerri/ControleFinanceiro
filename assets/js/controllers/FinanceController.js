@@ -28,6 +28,7 @@ export class FinanceController{
         this._finalBalance = new FinalBalance()
         this._finalBalanceView = new FinalBalanceView(this._finalBalancePost)
         this._draws = new Draws()
+        this._clearAllButton = $('#limparTudo')
 
     }
 
@@ -46,25 +47,25 @@ export class FinanceController{
         this._draws.drawChartSpend(this._spendList._spendList, this._graficoSpends)
         google.charts.setOnLoadCallback(this._draws._drawSpends)
         this._finalBalanceView.update(this._finalBalance.calculateFinalBalance(this._earningList.calculateTotalEarnings() , this._spendList.calculateTotalSpendings()))
+        this.clearInput()
         
     }
 
     createEarning(evento){
         evento.preventDefault()
         this._earningList.addEarningList(new Earning(this._inputNameEarn.value , Number(this._inputValueEarn.value) ))
-        this.clearInput()
         localStorage.setItem('earnList', JSON.stringify(this._earningList._earningList))
-        this.showFinanceLocalStorage()
         location.reload()
+        this.showFinanceLocalStorage()
+        
     }
 
     createSpend(evento){
         evento.preventDefault()
         this._spendList.addSpendList(new Spending(this._inputNameSpend.value, Number(this._inputValueSpend.value)))
-        this.clearInput()
         localStorage.setItem('spendList', JSON.stringify(this._spendList._spendList))
-        this.showFinanceLocalStorage()
         location.reload()
+        this.showFinanceLocalStorage()
         
     }
 
@@ -84,6 +85,7 @@ export class FinanceController{
             this._itemSpends.style.visibility = 'visible'
             this._graficoSpends.style.visibility = 'visible'
             this._finalBalancePost.style.visibility = 'visible'
+            this._clearAllButton.style.visibility = 'visible'
     }
     
     itemRemoveEarn(index){
@@ -100,6 +102,13 @@ export class FinanceController{
         this._spendView.update(this._spendList)
         this.showFinanceLocalStorage()
         location.reload()
+    }
+
+    clearAll(){
+        localStorage.clear()
+        location.reload()
+        
+
     }
     
     
