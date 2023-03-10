@@ -13,8 +13,6 @@ formSpending.addEventListener("submit", (evento) => {financeController.createSpe
 
 document.onload = financeController.showFinanceLocalStorage()
 
-console.log(financeController._earningList._earningList)
-
 let buttonRemoveEarn = document.querySelectorAll("#buttonRemoveEarn")
 
 let buttonRemoveSpend = document.querySelectorAll("#buttonRemoveSpend")
@@ -25,19 +23,19 @@ let buttonRemoveSpendArray = []
 
 buttonRemoveEarn.forEach(item =>  buttonRemoveEarnArray.push(item)) 
 
-function removeItemEarn(item){
+    function removeItemEarn(item){
     financeController.itemRemoveEarn(buttonRemoveEarnArray.indexOf(item))
-    
 }
-buttonRemoveEarnArray.map(item => item.addEventListener('click', function (){ removeItemEarn(item)} ))
+
+        buttonRemoveEarnArray.map(item => item.addEventListener('click', function (){ removeItemEarn(item)} ))
+
 
 buttonRemoveSpend.forEach(item =>  buttonRemoveSpendArray.push(item)) 
 
-function removeItemSpend(item){
+    function removeItemSpend(item){
     financeController.itemRemoveSpend(buttonRemoveSpendArray.indexOf(item))
-   
 }
-buttonRemoveSpendArray.map(item => item.addEventListener('click', function (){ removeItemSpend(item)} ))
+        buttonRemoveSpendArray.map(item => item.addEventListener('click', function (){ removeItemSpend(item)} ))
 
 
 let clearAllButton = document.getElementById('limparTudo')

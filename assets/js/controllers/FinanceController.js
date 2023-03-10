@@ -4,7 +4,6 @@ import { EarningList } from "../models/EarningList.js"
 import { SpendList } from "../models/SpendList.js"
 import { EarnView } from "../views/EarnView.js"
 import { SpendView } from "../views/SpendView.js"
-import { tranformNumberInMonetary } from "../helpers/tranformNumberInMonetary.js"
 import { FinalBalanceView } from "../views/FinalBalanceView.js"
 import { FinalBalance } from "../models/FinalBalance.js"
 import { Draws } from "../commons/Draws.js"
@@ -53,7 +52,7 @@ export class FinanceController{
 
     createEarning(evento){
         evento.preventDefault()
-        this._earningList.addEarningList(new Earning(this._inputNameEarn.value , Number(this._inputValueEarn.value) ))
+        this._earningList.addEarningList(new Earning(this._inputNameEarn.value , parseFloat(this._inputValueEarn.value.replace(',', '.')) ))
         localStorage.setItem('earnList', JSON.stringify(this._earningList._earningList))
         location.reload()
         this.showFinanceLocalStorage()
@@ -62,7 +61,7 @@ export class FinanceController{
 
     createSpend(evento){
         evento.preventDefault()
-        this._spendList.addSpendList(new Spending(this._inputNameSpend.value, Number(this._inputValueSpend.value)))
+        this._spendList.addSpendList(new Spending(this._inputNameSpend.value, parseFloat(this._inputValueSpend.value.replace(',', '.'))))
         localStorage.setItem('spendList', JSON.stringify(this._spendList._spendList))
         location.reload()
         this.showFinanceLocalStorage()

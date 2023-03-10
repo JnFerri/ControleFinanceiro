@@ -13,7 +13,7 @@ export class EarnView extends View{
          <button id="buttonRemoveEarn" ">X</button>
         <div type="none" class="item__list"> 
      <span class="list__name"> Ganho : ${props._name}</span>
-     <span class="list__value"> Valor : ${tranformNumberInMonetary.tranformToReais(Number(props._value))}</span>
+     <span class="list__value"> Valor :${tranformNumberInMonetary.tranformToReais(parseFloat(props._value))} </span>
     </div>
     </div>
     `).join('')}
