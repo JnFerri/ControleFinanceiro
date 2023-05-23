@@ -59,3 +59,18 @@ box-shadow: inset -5px -5px 35px #c2c2c2,
 .form__input::-webkit-inner-spin-button{
     -webkit-appearance: none;
 }
+
+@media (max-width:780px){
+    .container__forms{
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .box__form{
+        margin-bottom: 10px ;
+        width: 90%;
+        align-items: center;
+    
+        
+    }
+}

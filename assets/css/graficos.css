@@ -26,3 +26,26 @@
     justify-content: space-around;
    
 }
+
+@media (max-width:780px){
+    .graficos{
+        flex-direction: column;
+        width: 100%;
+    }
+    #graficoPizzaEarns{
+        width: 100%;
+        margin-bottom: 10px;
+        border: 0px;
+        box-shadow: 0px 0px 0px;
+    }
+
+    #graficoPizzaSpends{
+        margin-bottom: 10px;
+        width: 100%;
+        border: 0px;
+        box-shadow: 0px 0px 0px;
+    }
+    
+    
+    }
+   

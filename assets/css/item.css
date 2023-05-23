@@ -82,3 +82,13 @@ box-shadow:  -6px -6px 37px #999999,
     border-radius: 5px;
 }
 
+@media (max-width:780px){
+    .item{
+        width: 100%;
+        
+    }}
+    @media (max-width:1024px){
+        .item{
+            width: 100%;
+            
+        }}
